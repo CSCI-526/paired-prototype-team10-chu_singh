@@ -7,9 +7,7 @@ public class Obstacle2D : Object2D
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Game Over!");
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.HitObstacle();
         }
     }
 }

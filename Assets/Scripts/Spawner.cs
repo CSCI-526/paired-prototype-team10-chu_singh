@@ -4,6 +4,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject coin;
     public GameObject obstacle;
+    public GameObject healthPowerup;
     public float spawnInterval = 1f;
 
     public float minY = -4f;
@@ -27,8 +28,13 @@ public class Spawner : MonoBehaviour
     {
         float spawnY = Random.Range(minY, maxY);
         Vector3 spawnPosition = new(spawnX, spawnY, 0f);
+        float randomValue = Random.value;
         // Randomly decide to spawn a coin or an obstacle
-        if (Random.value < 0.5f)
+        if (randomValue < 0.2f)
+        {
+            Instantiate(healthPowerup, spawnPosition, Quaternion.identity);
+        }
+        else if (randomValue < 0.5f)
         {
             Instantiate(coin, spawnPosition, Quaternion.identity);
         }
