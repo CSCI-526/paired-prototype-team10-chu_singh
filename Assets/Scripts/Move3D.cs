@@ -38,5 +38,9 @@ public class Move3D : MonoBehaviour
 
         // Always move forward
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        Vector3 pos = transform.position;
+        pos.z = 0f;
+        transform.position = pos;
     }
 }

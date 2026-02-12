@@ -5,7 +5,7 @@ public class SmoothCamera : MonoBehaviour
     public Transform target;
 
     [Header("Position")]
-    public Vector3 offset = new Vector3(0f, 3f, -10f);
+    public Vector3 offset = new Vector3(0f, 0f, -10f);
 
     [Header("Smoothing")]
     public float positionSmoothTime = 0.3f;
