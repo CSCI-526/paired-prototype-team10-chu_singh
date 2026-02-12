@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float invincibilityTimer = 0f;
 
     public TextMeshProUGUI coinText;
+    public bool gameEnded = false;
 
     private void Awake()
     {
@@ -35,6 +36,11 @@ public class GameManager : MonoBehaviour
             player.GetComponent<SpriteRenderer>().color = new Color(0.2f, 0.2f, 0.2f);
         }
 
+        if (gameEnded && Input.anyKeyDown)
+        {
+            RestartGame();
+        }
+
     }
 
     public void AddScore(int amount)
@@ -49,8 +55,10 @@ public class GameManager : MonoBehaviour
 
         if (score >= scoreToWin)
         {
+            coinText.text = "GAME WON!";
             Debug.Log("You Win!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 0f;
+            gameEnded = true;
         }
     }
 
@@ -58,7 +66,10 @@ public class GameManager : MonoBehaviour
     {
         if (isInvincible) return;
         Debug.Log("Hit an obstacle! Game Over.");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        coinText.text = "GAME OVER!";
+        Debug.Log("Hit an obstacle! Game Over.");
+        Time.timeScale = 0f;
+        gameEnded = true;
     }
 
     public void GrantInvincibility(float duration)
@@ -69,5 +80,11 @@ public class GameManager : MonoBehaviour
     public void GrantInfiniteEnergy(float duration)
     {
         PlayerController.instance.GiveInfiniteEnergy(duration);
+    }
+
+    void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
