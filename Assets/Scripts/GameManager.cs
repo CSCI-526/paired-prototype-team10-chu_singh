@@ -65,4 +65,9 @@ public class GameManager : MonoBehaviour
     {
         invincibilityTimer = duration;
     }
+
+    public void GrantInfiniteEnergy(float duration)
+    {
+        PlayerController.instance.GiveInfiniteEnergy(duration);
+    }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public float moveSpeed = 5f;
 
     public float maxEnergy = 100f;
@@ -15,8 +17,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
     private float currentEnergy;
 
+    private bool infiniteEnergy = false;
+    private float infiniteEnergyDuration = 0;
+
     void Awake()
     {
+        instance = this;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
 
@@ -28,12 +34,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (infiniteEnergyDuration > 0)
+        {
+            infiniteEnergy = true;
+            infiniteEnergyDuration -= Time.deltaTime;
+        }
+        else
+        {
+            infiniteEnergy = false;
+        }
+
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
         bool isMoving = input.sqrMagnitude > 0.0001f;
 
-        if (isMoving && currentEnergy > 0f)
+        if (isMoving && !infiniteEnergy && currentEnergy > 0f)
         {
             currentEnergy -= energyDrainPerSecond * Time.deltaTime;
             currentEnergy = Mathf.Max(0f, currentEnergy);
@@ -41,6 +58,7 @@ public class PlayerController : MonoBehaviour
             if (healthBar != null)
                 healthBar.SetEnergy(currentEnergy, maxEnergy);
         }
+
     }
 
     void FixedUpdate()
@@ -66,5 +84,13 @@ public class PlayerController : MonoBehaviour
     public float GetCurrentEnergy()
     {
         return currentEnergy;
+    }
+
+    public void GiveInfiniteEnergy(float duration)
+    {
+        currentEnergy = maxEnergy;
+        infiniteEnergyDuration = duration;
+        if (healthBar != null)
+            healthBar.SetEnergy(currentEnergy, maxEnergy);
     }
 }

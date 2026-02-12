@@ -5,7 +5,8 @@ public class Spawner : MonoBehaviour
     public GameObject coin;
     public GameObject obstacle;
     public GameObject healthPowerup;
-    public float spawnInterval = 1f;
+    public GameObject energyPowerup;
+    public float spawnInterval = 0.5f;
 
     public float minY = -4f;
     public float maxY = 4f;
@@ -34,7 +35,11 @@ public class Spawner : MonoBehaviour
         {
             Instantiate(healthPowerup, spawnPosition, Quaternion.identity);
         }
-        else if (randomValue < 0.5f)
+        else if (randomValue < 0.4f)
+        {
+            Instantiate(energyPowerup, spawnPosition, Quaternion.identity);
+        }
+        else if (randomValue < 0.7f)
         {
             Instantiate(coin, spawnPosition, Quaternion.identity);
         }
