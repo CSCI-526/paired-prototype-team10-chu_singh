@@ -827,6 +827,7 @@ MonoBehaviour:
   coin: {fileID: 5884026826518414178, guid: d91e40cc732679c41b57855bac1a65f6, type: 3}
   obstacle: {fileID: 4792981968152601438, guid: 278f1e62de51bbc4cade4b84dcfff775, type: 3}
   healthPowerup: {fileID: 7402054794738148065, guid: eb941c7ff94febc48a9729c88d9b5496, type: 3}
+  energyPowerup: {fileID: 7872855666348541815, guid: f6e851891673374418b0b5fd3d77091c, type: 3}
   spawnInterval: 2
   minY: -4
   maxY: 4
