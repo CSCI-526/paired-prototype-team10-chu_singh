@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2903133358113249385}
   - component: {fileID: 1051619466181844568}
   - component: {fileID: 5230527877056013839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnergyBiscuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3492148598875879456}
   - component: {fileID: 6686588273177513476}
   - component: {fileID: 8804195087300768084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnergyPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
