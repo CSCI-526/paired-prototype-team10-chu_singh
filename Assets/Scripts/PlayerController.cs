@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float startEnergy = 100f;
     public float energyDrainPerSecond = 10f;
 
-    public HealthBar healthBar;   // MUST be assigned in Inspector
+    public HealthBar healthBar;   
 
     private Rigidbody2D rb;
     private Vector2 input;
@@ -71,8 +71,6 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = input.normalized * moveSpeed;
     }
-
-    // 🔥 THIS METHOD MUST UPDATE THE BAR
     public void AddEnergy(float amount)
     {
         currentEnergy = Mathf.Clamp(currentEnergy + amount, 0f, maxEnergy);
