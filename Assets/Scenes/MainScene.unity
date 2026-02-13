@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 146223759}
   - component: {fileID: 146223761}
   - component: {fileID: 146223760}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +321,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1910589
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09552954
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -391,7 +399,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 51
+  field of view: 52
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -656,7 +664,7 @@ GameObject:
   - component: {fileID: 669146678}
   - component: {fileID: 669146677}
   - component: {fileID: 669146676}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CoinCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,11 +836,17 @@ MonoBehaviour:
   obstacle: {fileID: 4792981968152601438, guid: 278f1e62de51bbc4cade4b84dcfff775, type: 3}
   healthPowerup: {fileID: 7402054794738148065, guid: eb941c7ff94febc48a9729c88d9b5496, type: 3}
   energyPowerup: {fileID: 7872855666348541815, guid: f6e851891673374418b0b5fd3d77091c, type: 3}
-  spawnInterval: 2
+  obstacleStartInterval: 0.6
+  obstacleMinInterval: 0.15
+  rampDuration: 120
+  otherSpawnInterval: 3
   minY: -4
   maxY: 4
   spawnX: 10
-  timer: 0
+  spawnCheckRadius: 0.8
+  spawnBlockLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &882311843
 Transform:
   m_ObjectHideFlags: 0
@@ -882,11 +896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.34557
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01313
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -919,6 +933,14 @@ PrefabInstance:
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0233006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.011650339
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1140,7 +1162,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1224,11 +1246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.46374
+      value: -0.488
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.008
+      value: -0.016
       objectReference: {fileID: 0}
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1261,6 +1283,14 @@ PrefabInstance:
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2008278
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10041407
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1389,6 +1419,10 @@ PrefabInstance:
       propertyPath: biscuitPrefab
       value: 
       objectReference: {fileID: 8561795910437485178, guid: 3a2a1c1e475624d4382ae9e3a5ee5e63, type: 3}
+    - target: {fileID: 7318902583368658585, guid: 5c413dace60614b0eb9a407a3dee9e9f, type: 3}
+      propertyPath: spawnInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7318902583368658585, guid: 5c413dace60614b0eb9a407a3dee9e9f, type: 3}
       propertyPath: backgroundRenderer
       value: 
@@ -1654,6 +1688,14 @@ PrefabInstance:
     - target: {fileID: 5645324727170789358, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1687274
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727716778882065305, guid: 54a0a5182be5a4ef0b72c1a97e8c7d3c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0843638
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

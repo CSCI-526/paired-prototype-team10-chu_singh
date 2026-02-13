@@ -9,11 +9,7 @@ public class EnergyBiscuit : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime, Space.World);
-
-        // optional safety destroy if far off-screen
-        if (transform.position.x < -30f) Destroy(gameObject);
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
